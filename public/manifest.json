@@ -1,0 +1,9 @@
+{
+  "id": "syntax-highlighter",
+  "name": "Syntax Highlighter",
+  "description": "Adds additional features to the built-in Prism.js syntax highlighter.",
+  "version": "1.0.0",
+  "minAppVersion": "1.8.10",
+  "author": "Bobooon",
+  "isDesktopOnly": false
+}

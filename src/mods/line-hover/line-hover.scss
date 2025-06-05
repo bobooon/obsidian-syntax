@@ -1,0 +1,14 @@
+code.syntax-block[data-line-hover] {
+  --syntax-line-background-hover: rgb(var(--mono-rgb-100), 0.05);
+
+  .line:is(:focus, :focus-within, :hover) {
+    background-color: var(--syntax-line-background-hover);
+  }
+
+  &[data-line-numbers],
+  &:has([class*="highlight-"]) {
+    .line:is(:focus, :focus-within, :hover) {
+      --syntax-line-gutter-background-hover: var(--syntax-line-background-hover);
+    }
+  }
+}

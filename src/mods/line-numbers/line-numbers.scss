@@ -1,0 +1,37 @@
+body {
+  --syntax-line-numbers-width: 2ch;
+  --syntax-line-numbers-padding-start: var(--size-4-3);
+  --syntax-line-numbers-color: var(--text-faint);
+  --syntax-line-numbers-text-align: right;
+}
+
+code.syntax-block[data-line-numbers] {
+  &:has(.line:nth-child(100)) {
+    --syntax-line-numbers-width: 3ch;
+  }
+
+  &:has(.line:nth-child(1000)) {
+    --syntax-line-numbers-width: 4ch;
+  }
+
+  .line:not(.meta) {
+    counter-increment: line-number;
+  }
+
+  .line-start::before {
+    background-color: var(--code-background);
+  }
+
+  .line-gutter::before {
+    display: inline-block;
+    width: var(--syntax-line-numbers-width);
+    padding-left: var(--syntax-line-numbers-padding-start);
+    color: var(--syntax-line-numbers-color);
+    text-align: var(--syntax-line-numbers-text-align);
+    content: counter(line-number);
+  }
+
+  &[data-line-hover] .line:is(:focus, :focus-within, :hover) .line-gutter::before {
+    color: var(--syntax-line-gutter-color-hover);
+  }
+}

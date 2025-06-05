@@ -1,0 +1,14 @@
+code.syntax-block {
+  .line.meta {
+    color: var(--code-comment);
+
+    &:last-child {
+      font-size: 0;
+      opacity: 0;
+    }
+  }
+
+  &[data-line-numbers] .line.meta .line-gutter::before {
+    content: "";
+  }
+}

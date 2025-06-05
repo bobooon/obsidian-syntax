@@ -1,0 +1,39 @@
+body {
+  --syntax-match-padding-inline: var(--size-2-1);
+  --syntax-match-icon-padding-end: var(--size-2-1);
+  --syntax-match-icon-size: 10px;
+  --syntax-match-color: var(--code-normal);
+  --syntax-match-background-opacity: 0.075;
+  --syntax-match-background: rgb(var(--mono-rgb-100), var(--syntax-match-background-opacity));
+  --syntax-match-border-width: 1px;
+  --syntax-match-border-opacity: 0.35;
+  --syntax-match-border-color: rgb(var(--mono-rgb-100), 0.2);
+  --syntax-match-radius: 0.2em;
+}
+
+code.syntax-block match {
+  padding-inline: var(--syntax-match-padding-inline);
+  background-color: var(--syntax-match-background);
+  border: var(--syntax-match-border-width) solid var(--syntax-match-border-color);
+  border-radius: var(--syntax-match-radius);
+
+  .syntax-icon {
+    padding-right: var(--syntax-match-icon-padding-end);
+    vertical-align: middle;
+
+    svg {
+      --icon-size: var(--syntax-match-icon-size);
+    }
+  }
+
+  @each $color in (red, orange, yellow, green, cyan, blue, purple, pink) {
+    &.match-#{"" + $color} {
+      --syntax-match-background: rgb(var(--color-#{$color}-rgb), var(--syntax-match-background-opacity));
+      --syntax-match-border-color: rgb(var(--color-#{$color}-rgb), var(--syntax-match-border-opacity));
+    }
+
+    &[class*="match-#{"" + $color}!"] {
+      color: var(--color-#{$color});
+    }
+  }
+}

@@ -1,0 +1,25 @@
+pre.syntax-block {
+  overflow: visible;
+
+  .syntax-wrapper {
+    overflow-x: auto;
+
+    > code {
+      overflow: visible;
+    }
+  }
+
+  .line {
+    min-width: fit-content;
+    white-space: pre;
+  }
+
+  &:has([data-line-wrap]) {
+    overflow-x: unset;
+
+    .line {
+      width: 100%;
+      white-space: pre-wrap;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+body {
+  --syntax-line-padding-start: var(--size-4-3);
+  --syntax-line-background: transparent;
+  --syntax-line-background-hover: transparent;
+  --syntax-line-gutter-width: var(--size-4-5);
+  --syntax-line-gutter-icon-size: 10px;
+  --syntax-line-gutter-color: var(--text-muted);
+  --syntax-line-gutter-color-hover: var(--text-normal);
+  --syntax-line-gutter-background: transparent;
+  --syntax-line-gutter-background-hover: transparent;
+  --syntax-line-gutter-border-width: var(--border-width);
+  --syntax-line-gutter-border-color: var(--background-modifier-border);
+}
+
+pre.syntax-block {
+  .syntax-wrapper > code {
+    width: 100%;
+    min-width: fit-content;
+  }
+
+  .line {
+    display: flex;
+    background-color: var(--syntax-line-background);
+    direction: ltr;
+
+    > span {
+      transition: filter 0.2s;
+    }
+  }
+
+  .line-start {
+    position: relative;
+    left: 0;
+    z-index: 2;
+    white-space: nowrap;
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+    }
+  }
+
+  &:has([data-line-sticky]) .line-start {
+    position: sticky;
+  }
+
+  .line-gutter {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    height: 100%;
+    color: var(--syntax-line-gutter-color);
+    background-color: var(--syntax-line-background);
+
+    .syntax-icon {
+      position: absolute;
+      right: 0;
+      width: var(--syntax-line-gutter-width);
+      text-align: center;
+      transform: translateY(1px);
+
+      svg {
+        --icon-size: var(--syntax-line-gutter-icon-size);
+      }
+    }
+  }
+
+  .line:is(:focus, :focus-within, :hover) .line-gutter {
+    background-color: var(--syntax-line-gutter-background-hover);
+  }
+
+  .line-gutter::after,
+  .line-end::after {
+    display: inline-block;
+    width: var(--syntax-line-gutter-width);
+    content: "\00A0";
+  }
+
+  &:has([data-line-numbers], [class*="highlight-"]) {
+    .line-gutter {
+      border-right: var(--syntax-line-gutter-border-width) solid var(--syntax-line-gutter-border-color);
+    }
+
+    .line-middle {
+      padding-left: var(--syntax-line-padding-start);
+    }
+  }
+}

@@ -1,0 +1,24 @@
+pre.syntax-block {
+  &:hover .copy-code-button {
+    display: inline-flex !important;
+  }
+
+  .syntax-icon-clipboard {
+    display: none;
+    color: var(--syntax-line-gutter-color-hover);
+  }
+
+  .line:has(.syntax-icon-clipboard):is(:focus, :focus-within, :hover) .line-gutter {
+    .syntax-icon:not(.syntax-icon-clipboard) {
+      display: none;
+    }
+
+    .syntax-icon-clipboard {
+      display: inline-block;
+    }
+  }
+}
+
+.cm-preview-code-block pre.syntax-block .copy-code-button {
+  display: none !important;
+}

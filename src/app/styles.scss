@@ -1,0 +1,37 @@
+body {
+  --syntax-padding-block: var(--size-4-4);
+}
+
+.syntax-hidden {
+  display: none;
+}
+
+.modal.syntax-modal {
+  @media screen and (width >= 700px) {
+    width: 600px;
+  }
+
+  .modal-content {
+    overflow-y: auto;
+  }
+
+  p {
+    line-height: var(--line-height-normal);
+    text-wrap: pretty;
+  }
+
+  code {
+    user-select: text;
+  }
+}
+
+pre.syntax-block {
+  --color-gray-rgb: var(--mono-rgb-100);
+
+  padding: var(--syntax-padding-block) 0;
+
+  code {
+    padding: unset;
+    border-radius: unset;
+  }
+}

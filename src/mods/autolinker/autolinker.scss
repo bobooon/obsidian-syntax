@@ -1,0 +1,8 @@
+code.syntax-block .token.comment a {
+  color: var(--code-comment);
+  text-decoration: underline;
+
+  &:is(:focus, :focus-within, :hover) {
+    color: var(--code-normal);
+  }
+}

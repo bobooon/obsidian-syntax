@@ -1,0 +1,25 @@
+body {
+  --syntax-inline-icon-padding-end: var(--size-2-1);
+  --syntax-inline-icon-size: 10px;
+}
+
+code.syntax-inline {
+  &[class*="language-"] {
+    display: inline;
+  }
+
+  .syntax-icon {
+    padding-right: var(--syntax-inline-icon-padding-end);
+    vertical-align: middle;
+
+    svg {
+      --icon-size: var(--syntax-inline-icon-size);
+    }
+  }
+}
+
+@each $color in (red, orange, yellow, green, cyan, blue, purple, pink, gray) {
+  code.syntax-inline-#{"" + $color} {
+    color: var(--color-#{$color});
+  }
+}
